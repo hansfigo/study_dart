@@ -4,6 +4,12 @@ void main() {
   //LIST = Menggunakan Index
   //Dimulai dari 0
   List<String> a = ['Madoka', 'Mami', 'Sayaka'];
+  Map qw = {'x': 1, 'y': 2};
+  Map we = {'q': 1, 'w': 2};
+  
+  List fnl = [qw, we];
+
+  print(fnl);
 
   print(a);
   print('-----------------------------');
@@ -30,7 +36,7 @@ void main() {
   print(a);
   print('-----------------------------');
 
-  //Urutkan List 
+  //Urutkan List
   a.sort();
   print(a);
   print('-----------------------------');
@@ -43,7 +49,4 @@ void main() {
   //delete List
   a.clear();
   print(a);
-
-
-
 }
