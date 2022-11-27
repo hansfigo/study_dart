@@ -1,35 +1,54 @@
+/*
+  Claudio Hans Figo
+  29 October 2022
+
+  Buat Program untuk Masukan Nama dan NIM 
+  Lalu Output
+
+  Study Case Map, List
+
+*/
 import 'dart:convert';
 import 'dart:io';
 
-class Person {
-  var name = [];
-  late int age;
-}
+List? mhs = [];
 
-List Fruit = [
-  {'nama': 'Figo'},
-  {'nama': 'Powaa'}
-];
+var userNama;
+int? userNim;
+
+
+late int jumlahData;
 
 void main() {
-  Fruit.add({'nama': 'Kobeni'});
-  Map x = Fruit[2];
-  x['Nim'] = '21';
-  print(Fruit);
+  print("1. INPUT Data");
+  print("2. OUTPUT Data");
+  var menu = stdin.readLineSync();
 
-  x.forEach((key, value) {
-    print(value);
-  });
-  // Person person = Person();
-  // print("Masukan Jumlah Data");
-  // int data = int.parse(stdin.readLineSync()!);
-
-  // for (var i = 0; i < data; i++) {
-  //   print('Masukan Nama :');
-  //   person.name.add(stdin.readLineSync()!);
-  //   // person.name[i] = stdin.readLineSync()!;
-  // }
-  // for (var j = 0; j < data; j++) {
-  //   print(person.name[j]);
-  // }
+  if (menu == "1") {
+    print('Masukan Jumlah Data');
+    jumlahData = int.parse(stdin.readLineSync()!);
+    addData(jumlahData);
+  } else if (menu == "2") {
+  } else {}
 }
+
+void addData(int jumlahData) {
+  for (var i = 0; i < jumlahData; i++) {
+    print('$i Masukan Nama :');
+    userNama = stdin.readLineSync();
+    print('$i Masukan NIM :');
+    userNim = int.parse(stdin.readLineSync()!);
+    mhs!.add({
+      'Nama' :userNama,
+      'Nim' : userNim
+    });
+  }
+  for (var i = 0; i < mhs!.length; i++) {
+    Map x= mhs![i];
+    x.forEach((key, value) {
+      print('$key $value');
+    });
+  }
+}
+
+void outputData() {}
