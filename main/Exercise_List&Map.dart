@@ -23,14 +23,21 @@ void main() {
     print("1. INPUT Data");
     print("2. OUTPUT Data");
     var menu = stdin.readLineSync();
+    print('');
 
     if (menu == "1") {
       print('Masukan Jumlah Data');
       jumlahData = int.parse(stdin.readLineSync()!);
+      print('');
       addData(jumlahData);
     } else if (menu == "2") {
       outputData();
-    } else {
+    } else if (menu == "3") {
+      outputData();
+      print('Masukan Nomor Data Yang Anda Ingin Delete');
+      var indexData = stdin.readLineSync();
+      deleteData(indexData);
+    }else {
       print('error');
       loop = false;
     }
@@ -38,21 +45,37 @@ void main() {
 }
 
 void addData(int jumlahData) {
-  for (var i = 0; i < jumlahData; i++) { //looping untuk Input Data sesuai Input User
+  for (var i = 0; i < jumlahData; i++) {
+    //looping untuk Input Data sesuai Input User
     print('Masukan Nama :');
     userNama = stdin.readLineSync();
     print('Masukan NIM :');
     userNim = int.parse(stdin.readLineSync()!);
-    mhs!.add({'Nama': userNama, 'Nim': userNim}); //add Data Map dengan Key Nama & Nim ke List mhs
+    mhs!.add({
+      //add Data Map dengan Key Nama & Nim ke List mhs
+      'Nama': userNama,
+      'Nim': userNim
+    });
+    print('');
   }
 }
 
 void outputData() {
-  for (var i = 0; i < mhs!.length; i++) {//Looping untuk Deteksi Banyaknya data pada List mhs
-    Map x = mhs![i];
+  for (var i = 0; i < mhs!.length; i++) {
+    //Looping untuk Deteksi Banyaknya data pada List mhs
+    Map x = mhs![i];  
+    
     x.forEach((key, value) {
-      print('$key $value');
+      int num = i+1;
+      print('$num $key $value');
     });
-    print('\n');
+    print('');
   }
+}
+
+void deleteData(var indexData){
+    print('Yakin Dek Mau Delete?');
+
+    
+    
 }
