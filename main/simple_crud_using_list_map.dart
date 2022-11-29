@@ -12,7 +12,7 @@ import 'dart:io';
 
 List? mhs = [];
 
-var userNama;
+var userNama, confirm;
 int? userNim, indexData;
 
 late int jumlahData;
@@ -39,6 +39,11 @@ void main() {
       print('Masukan Nomor Data Yang Anda Ingin Delete');
       indexData = int.parse(stdin.readLineSync()!);
       deleteData(indexData);
+    } else if (menu == "4") {
+      outputData();
+      print('Masukan Nomor Data Yang Anda Ingin Edit');
+      indexData = int.parse(stdin.readLineSync()!);
+      editData(indexData);
     } else {
       print('error');
       loop = false;
@@ -76,7 +81,6 @@ void outputData() {
 }
 
 void deleteData(var indexData) {
-  var confirm;
   indexData = indexData - 1;
   // print(indexData);
   print(mhs![indexData]);
@@ -87,5 +91,37 @@ void deleteData(var indexData) {
     mhs!.removeAt(indexData);
   } else {
     print('Batal Delete');
+  }
+}
+
+void editData(var indexData) {
+  indexData = indexData - 1;
+  var name;
+  var nim;
+  var editData = mhs![indexData];
+
+  print('Nama : ');
+  name = stdin.readLineSync();
+  print('NIM : ');
+  nim = int.parse(stdin.readLineSync()!);
+
+  print('Nama : $name');
+  print('NIM : $nim');
+
+  print('Apakah Data Sudah Benar? (y/n)');
+  confirm = stdin.readLineSync();
+
+  if (confirm == "y") {
+    editData.update(
+       'Nama',
+       (value) => name,
+    );
+    editData.update(
+       'Nim',
+       (value) => nim,
+    );
+  }else{
+    name = '';
+    nim = '';
   }
 }
