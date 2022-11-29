@@ -13,7 +13,7 @@ import 'dart:io';
 List? mhs = [];
 
 var userNama;
-int? userNim;
+int? userNim, indexData;
 
 late int jumlahData;
 bool loop = true;
@@ -22,6 +22,8 @@ void main() {
   do {
     print("1. INPUT Data");
     print("2. OUTPUT Data");
+    print("3. DELETE Data");
+    print("4. EDIT Data");
     var menu = stdin.readLineSync();
     print('');
 
@@ -35,9 +37,9 @@ void main() {
     } else if (menu == "3") {
       outputData();
       print('Masukan Nomor Data Yang Anda Ingin Delete');
-      var indexData = stdin.readLineSync();
+      indexData = int.parse(stdin.readLineSync()!);
       deleteData(indexData);
-    }else {
+    } else {
       print('error');
       loop = false;
     }
@@ -61,21 +63,29 @@ void addData(int jumlahData) {
 }
 
 void outputData() {
+  print('OUTPUT DATA :');
   for (var i = 0; i < mhs!.length; i++) {
     //Looping untuk Deteksi Banyaknya data pada List mhs
-    Map x = mhs![i];  
-    
+    Map x = mhs![i];
     x.forEach((key, value) {
-      int num = i+1;
+      int num = i + 1;
       print('$num $key $value');
     });
     print('');
   }
 }
 
-void deleteData(var indexData){
-    print('Yakin Dek Mau Delete?');
-
-    
-    
+void deleteData(var indexData) {
+  var confirm;
+  indexData = indexData - 1;
+  // print(indexData);
+  print(mhs![indexData]);
+  print('Yakin Dek Mau Delete?');
+  confirm = stdin.readLineSync();
+  print('');
+  if (confirm == 'y') {
+    mhs!.removeAt(indexData);
+  } else {
+    print('Batal Delete');
+  }
 }
