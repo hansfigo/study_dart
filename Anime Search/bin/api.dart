@@ -55,7 +55,7 @@ void main(List<String> args) async {
         print('${anime.releasedDate}\n');
       }
     } else {
-      print('Anime not Found !!');
+      print('Anime not Found !!\n');
     }
     print('Search another Anime ? (y/n)');
     input = stdin.readLineSync()!.toLowerCase();
